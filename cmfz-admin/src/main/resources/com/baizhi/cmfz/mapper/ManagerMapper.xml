@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.ManagerDao">
+    <resultMap id="ManagerMap" type="Manager">
+        <id property="mId" column="m_id"></id>
+        <result property="mName" column="m_name"></result>
+        <result property="mSalt" column="m_salt"/>
+        <result property="mStatus" column="m_status"/>
+        <result property="mPassword" column="m_password"/>
+    </resultMap>
+
+    <select id="selectManager" resultMap="ManagerMap">
+        select * from t_manager where m_name = #{mName}
+    </select>
+    <insert id="insertManager">
+        insert into t_manager values(replace(UUID(),'-',''),#{mName},#{mSalt},#{mStatus},#{mPassword})
+    </insert>
+
+</mapper>
