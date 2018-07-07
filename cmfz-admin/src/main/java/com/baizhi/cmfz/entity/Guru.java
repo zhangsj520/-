@@ -9,60 +9,60 @@ import java.io.Serializable;
  *@Exception
  */
 public class Guru implements Serializable {
-    private String gId;
-    private String gReligionName;
-    private String gPicture;
-    private String gDescription;
-
-    public Guru() {
-    }
-
-    public Guru(String gId, String gReligionName, String gPicture, String gDescription) {
-        this.gId = gId;
-        this.gReligionName = gReligionName;
-        this.gPicture = gPicture;
-        this.gDescription = gDescription;
-    }
+    private String guruId;
+    private String guruReligionName;
+    private String guruPicture;
+    private String guruDescription;
 
     @Override
     public String toString() {
         return "Guru{" +
-                "gId='" + gId + '\'' +
-                ", gReligionName='" + gReligionName + '\'' +
-                ", gPicture='" + gPicture + '\'' +
-                ", gDescription='" + gDescription + '\'' +
+                "guruId='" + guruId + '\'' +
+                ", guruReligionName='" + guruReligionName + '\'' +
+                ", guruPicture='" + guruPicture + '\'' +
+                ", guruDescription='" + guruDescription + '\'' +
                 '}';
     }
 
-    public String getgId() {
-        return gId;
+    public String getGuruId() {
+        return guruId;
     }
 
-    public void setgId(String gId) {
-        this.gId = gId;
+    public void setGuruId(String guruId) {
+        this.guruId = guruId;
     }
 
-    public String getgReligionName() {
-        return gReligionName;
+    public String getGuruReligionName() {
+        return guruReligionName;
     }
 
-    public void setgReligionName(String gReligionName) {
-        this.gReligionName = gReligionName;
+    public void setGuruReligionName(String guruReligionName) {
+        this.guruReligionName = guruReligionName;
     }
 
-    public String getgPicture() {
-        return gPicture;
+    public String getGuruPicture() {
+        return guruPicture;
     }
 
-    public void setgPicture(String gPicture) {
-        this.gPicture = gPicture;
+    public void setGuruPicture(String guruPicture) {
+        this.guruPicture = guruPicture;
     }
 
-    public String getgDescription() {
-        return gDescription;
+    public String getGuruDescription() {
+        return guruDescription;
     }
 
-    public void setgDescription(String gDescription) {
-        this.gDescription = gDescription;
+    public void setGuruDescription(String guruDescription) {
+        this.guruDescription = guruDescription;
+    }
+
+    public Guru() {
+    }
+
+    public Guru(String guruId, String guruReligionName, String guruPicture, String guruDescription) {
+        this.guruId = guruId;
+        this.guruReligionName = guruReligionName;
+        this.guruPicture = guruPicture;
+        this.guruDescription = guruDescription;
     }
 }

@@ -1,5 +1,8 @@
 package com.baizhi.cmfz.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 /**
@@ -10,71 +13,73 @@ import java.util.Date;
  *@Exception
  */
 public class Slideshow implements Serializable {
-    private String sId;
-    private String sPath;
-    private Date sDate;
-    private String sDescription;
-    private String sStatus;
+    private String slideId;
+    private String slidePath;
+    @JSONField(format = "yyyy-MM-dd")   //相应的日期格式
+    @DateTimeFormat(pattern = "yyyy-MM-dd")  //请求的日期格式
+    private Date slideDate;
+    private String slideDescription;
+    private String slideStatus;
 
     public Slideshow() {
-    }
-
-    public Slideshow(String sId, String sPath, Date sDate, String sDescription, String sStatus) {
-        this.sId = sId;
-        this.sPath = sPath;
-        this.sDate = sDate;
-        this.sDescription = sDescription;
-        this.sStatus = sStatus;
     }
 
     @Override
     public String toString() {
         return "Slideshow{" +
-                "sId='" + sId + '\'' +
-                ", sPath='" + sPath + '\'' +
-                ", sDate=" + sDate +
-                ", sDescription='" + sDescription + '\'' +
-                ", sStatus='" + sStatus + '\'' +
+                "slideId='" + slideId + '\'' +
+                ", slidePath='" + slidePath + '\'' +
+                ", slideDate=" + slideDate +
+                ", slideDescription='" + slideDescription + '\'' +
+                ", slideStatus='" + slideStatus + '\'' +
                 '}';
     }
 
-    public String getsId() {
-        return sId;
+    public String getSlideId() {
+        return slideId;
     }
 
-    public void setsId(String sId) {
-        this.sId = sId;
+    public void setSlideId(String slideId) {
+        this.slideId = slideId;
     }
 
-    public String getsPath() {
-        return sPath;
+    public String getSlidePath() {
+        return slidePath;
     }
 
-    public void setsPath(String sPath) {
-        this.sPath = sPath;
+    public void setSlidePath(String slidePath) {
+        this.slidePath = slidePath;
     }
 
-    public Date getsDate() {
-        return sDate;
+    public Date getSlideDate() {
+        return slideDate;
     }
 
-    public void setsDate(Date sDate) {
-        this.sDate = sDate;
+    public void setSlideDate(Date slideDate) {
+        this.slideDate = slideDate;
     }
 
-    public String getsDescription() {
-        return sDescription;
+    public String getSlideDescription() {
+        return slideDescription;
     }
 
-    public void setsDescription(String sDescription) {
-        this.sDescription = sDescription;
+    public void setSlideDescription(String slideDescription) {
+        this.slideDescription = slideDescription;
     }
 
-    public String getsStatus() {
-        return sStatus;
+    public String getSlideStatus() {
+        return slideStatus;
     }
 
-    public void setsStatus(String sStatus) {
-        this.sStatus = sStatus;
+    public void setSlideStatus(String slideStatus) {
+        this.slideStatus = slideStatus;
+    }
+
+    public Slideshow(String slideId, String slidePath, Date slideDate, String slideDescription, String slideStatus) {
+        this.slideId = slideId;
+        this.slidePath = slidePath;
+        this.slideDate = slideDate;
+        this.slideDescription = slideDescription;
+        this.slideStatus = slideStatus;
     }
 }

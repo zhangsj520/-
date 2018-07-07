@@ -1,25 +1,19 @@
 package com.baizhi.cmfz.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Menu implements Serializable {
     private Integer menuId;
     private String menuName;
     private String menuCode;
-    private String menucon;
+    private String menuIcon;
+    private String menuUrl;
     private String menuLevel;
     private Integer menuParentId;
+    private List<Menu> menus;
 
     public Menu() {
-    }
-
-    public Menu(Integer menuId, String menuName, String menuCode, String menucon, String menuLevel, Integer menuParentId) {
-        this.menuId = menuId;
-        this.menuName = menuName;
-        this.menuCode = menuCode;
-        this.menucon = menucon;
-        this.menuLevel = menuLevel;
-        this.menuParentId = menuParentId;
     }
 
     @Override
@@ -28,9 +22,11 @@ public class Menu implements Serializable {
                 "menuId=" + menuId +
                 ", menuName='" + menuName + '\'' +
                 ", menuCode='" + menuCode + '\'' +
-                ", menucon='" + menucon + '\'' +
+                ", menuIcon='" + menuIcon + '\'' +
+                ", menuUrl='" + menuUrl + '\'' +
                 ", menuLevel='" + menuLevel + '\'' +
                 ", menuParentId=" + menuParentId +
+                ", menus=" + menus +
                 '}';
     }
 
@@ -58,12 +54,20 @@ public class Menu implements Serializable {
         this.menuCode = menuCode;
     }
 
-    public String getMenucon() {
-        return menucon;
+    public String getMenuIcon() {
+        return menuIcon;
     }
 
-    public void setMenucon(String menucon) {
-        this.menucon = menucon;
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
+    }
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
     }
 
     public String getMenuLevel() {
@@ -81,4 +85,24 @@ public class Menu implements Serializable {
     public void setMenuParentId(Integer menuParentId) {
         this.menuParentId = menuParentId;
     }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public Menu(Integer menuId, String menuName, String menuCode, String menuIcon, String menuUrl, String menuLevel, Integer menuParentId, List<Menu> menus) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.menuCode = menuCode;
+        this.menuIcon = menuIcon;
+        this.menuUrl = menuUrl;
+        this.menuLevel = menuLevel;
+        this.menuParentId = menuParentId;
+        this.menus = menus;
+    }
 }
+

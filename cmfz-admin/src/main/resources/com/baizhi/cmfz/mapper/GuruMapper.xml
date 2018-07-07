@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.GuruDao">
+    <resultMap id="gm" type="Guru">
+        <id property="guruId" column="g_id"/>
+        <result property="guruReligionName" column="g_religionName"/>
+        <result property="guruPicture" column="g_picture"/>
+        <result property="guruDescription" column="g_description"/>
+    </resultMap>
+    <select id="selectAllGuru" resultMap="gm">
+        select * from t_guru limit #{start},#{pageSize}
+    </select>
+    <insert id="insertOne">
+        insert into t_guru values(replace(UUID(),'-',''),#{guruReligionName},#{guruPicture},#{guruDescription})
+    </insert>
+    <select id="count" resultType="int">
+        select count(*) from t_guru
+        <if test="key!=null and key!=''">
+            where ${key} like concat('%',#{value},'%')
+        </if>
+    </select>
+    <update id="updateOne">
+        update t_guru
+        <set>
+            g_religionName = #{guruReligionName},g_description = #{guruDescription},
+            <if test="guruPicture!=null and guruPicture !=''">
+               g_picture = #{guruPicture},
+            </if>
+        </set>
+        where g_id = #{guruId}
+    </update>
+    <select id="selectByKey" resultMap="gm">
+        select * from t_guru where ${key} like concat('%',#{value},'%') limit #{start},#{pageSize}
+    </select>
+</mapper>

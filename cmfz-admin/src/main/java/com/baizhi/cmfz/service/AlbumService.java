@@ -5,4 +5,5 @@ package com.baizhi.cmfz.service;
  *@Time  2018/7/4 12:30
  */
 public interface AlbumService {
+
 }

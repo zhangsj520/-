@@ -26,9 +26,7 @@
     <script type="text/javascript">
 
         $(function () {
-            $("#captchaImage").click(function () {
-                $("#captchaImage").attr("src", "${pageContext.request.contextPath}/man/vCode?id=" + Math.random());
-            });
+
             $("#manName").textbox({
                 iconCls: 'icon-man',
                 iconAlign: "right",
@@ -54,7 +52,7 @@
                 },
                 success: function (data) {
                     if($.trim(data) == "success"){
-                         window.location.href="${pageContext.request.contextPath}/success.jsp";
+                         window.location.href="${pageContext.request.contextPath}/main.jsp";
                     }else{
                         window.location.href="${pageContext.request.contextPath}/error.jsp";
                     }
