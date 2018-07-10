@@ -58,6 +58,8 @@ public class ManagerController {
         if(code.equals(code1)){
             Manager m = ms.login(mName, mPassword);
             if(m!=null){
+                String managerName = m.getmName();
+                session.setAttribute("mn",managerName);
                 if(check!=null) {
                     Cookie cook = new Cookie("mName",java.net.URLEncoder.encode(mName,"UTF-8"));
                     cook.setMaxAge(30 * 24 * 60 * 60);

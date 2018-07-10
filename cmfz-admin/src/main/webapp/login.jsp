@@ -54,7 +54,7 @@
                     if($.trim(data) == "success"){
                          window.location.href="${pageContext.request.contextPath}/main.jsp";
                     }else{
-                        window.location.href="${pageContext.request.contextPath}/error.jsp";
+                        alert("登录失败");
                     }
                 }
             });
@@ -102,7 +102,7 @@
                     <input id="code" type="text" id="enCode" name="code" class="text captcha" maxlength="5"
                            autocomplete="off"/>
                     <img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/man/vCode"
-                         title="点击更换验证码"/>
+                         onCLick=" this.src='${pageContext.request.contextPath}/man/vCode?'+Math.random()" title="点击更换验证码"/>
                 </td>
 
             </tr>

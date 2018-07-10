@@ -34,7 +34,7 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public int registManager(Manager m) {
+    public int addManager(Manager m) {
         String salt = SaltUtil.getSalt();
         m.setmSalt(salt);
         m.setmPassword(DigestUtils.md5Hex(m.getmPassword().concat(salt)));

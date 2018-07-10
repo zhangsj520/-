@@ -57,7 +57,7 @@
                                     },
                                     success: function (data) {
                                         if (data == "success") {
-                                            $("#slideDialog").datagrid("reload", {});
+                                            $("#slideTable").datagrid("reload",{});
                                             $.messager.show({
                                                 title: "提示消息",
                                                 msg: "上传成功，窗口3秒后消失",
@@ -137,6 +137,7 @@
                                     });
                                 }
                             }],
+                            //选中那一行，把数据回显在form表单中
                             onLoad: function () {
                                 $("#uploadForm").form("load", rows);
                             }

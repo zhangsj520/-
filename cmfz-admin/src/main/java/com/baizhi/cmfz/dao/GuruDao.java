@@ -16,7 +16,7 @@ public interface GuruDao {
     *@Description 查询所有上师
     *@Time      2018/7/6  22:37
     */
-    public List<Guru> selectAllGuru(@Param("start") int start,@Param("pageSize") int pageSize);
+    public List<Guru> selectAllGuru(@Param("start") Integer start,@Param("pageSize") Integer pageSize);
     /**
     *@Author zsj
     *@Description 添加一个上师信息
@@ -42,5 +42,14 @@ public interface GuruDao {
     *@Time  2018/7/6/ 23:09
     */
     public int count(@Param("key") String Key,@Param("value") String value);
+
+    /**
+    *@Author    zsj
+     *@Description Excel 批量插入
+    *@Time  2018/7/8 19:12
+    */
+    public int insertList(List<Guru> list);
+
+
 
 }

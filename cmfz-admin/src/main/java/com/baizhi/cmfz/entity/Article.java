@@ -1,5 +1,8 @@
 package com.baizhi.cmfz.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 /**
@@ -10,82 +13,94 @@ import java.util.Date;
  *@Exception
  */
 public class Article implements Serializable {
-    private String aId;
-    private String aName;
-    private String aIntroduce;
-    private Date aDate;
-    private String aPicture;
-    private String gId;
+    private String articleId;
+    private String articleTitle;
+    private String articleIntroduce;
+    @JSONField(format = "yy-MM-dd HH:mm:ss")
+    private Date articleDate;
+    private String articleStatus;
+    private String guruId;
+    private Guru g = new Guru();
 
     public Article() {
     }
 
-    public Article(String aId, String aName, String aIntroduce, Date aDate, String aPicture, String gId) {
-        this.aId = aId;
-        this.aName = aName;
-        this.aIntroduce = aIntroduce;
-        this.aDate = aDate;
-        this.aPicture = aPicture;
-        this.gId = gId;
+    public Article(String articleId, String articleTitle, String articleIntroduce, Date articleDate, String articleStatus, String guruId, Guru g) {
+        this.articleId = articleId;
+        this.articleTitle = articleTitle;
+        this.articleIntroduce = articleIntroduce;
+        this.articleDate = articleDate;
+        this.articleStatus = articleStatus;
+        this.guruId = guruId;
+        this.g = g;
     }
 
-    public String getaId() {
-        return aId;
+    public String getArticleId() {
+        return articleId;
     }
 
-    public void setaId(String aId) {
-        this.aId = aId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId;
     }
 
-    public String getaName() {
-        return aName;
+    public String getArticleTitle() {
+        return articleTitle;
     }
 
-    public void setaName(String aName) {
-        this.aName = aName;
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
     }
 
-    public String getaIntroduce() {
-        return aIntroduce;
+    public String getArticleIntroduce() {
+        return articleIntroduce;
     }
 
-    public void setaIntroduce(String aIntroduce) {
-        this.aIntroduce = aIntroduce;
+    public void setArticleIntroduce(String articleIntroduce) {
+        this.articleIntroduce = articleIntroduce;
     }
 
-    public Date getaDate() {
-        return aDate;
+    public Date getArticleDate() {
+        return articleDate;
     }
 
-    public void setaDate(Date aDate) {
-        this.aDate = aDate;
+    public void setArticleDate(Date articleDate) {
+        this.articleDate = articleDate;
     }
 
-    public String getaPicture() {
-        return aPicture;
+    public String getArticleStatus() {
+        return articleStatus;
     }
 
-    public void setaPicture(String aPicture) {
-        this.aPicture = aPicture;
+    public void setArticleStatus(String articleStatus) {
+        this.articleStatus = articleStatus;
     }
 
-    public String getgId() {
-        return gId;
+    public String getGuruId() {
+        return guruId;
     }
 
-    public void setgId(String gId) {
-        this.gId = gId;
+    public void setGuruId(String guruId) {
+        this.guruId = guruId;
+    }
+
+    public Guru getG() {
+        return g;
+    }
+
+    public void setG(Guru g) {
+        this.g = g;
     }
 
     @Override
     public String toString() {
         return "Article{" +
-                "aId='" + aId + '\'' +
-                ", aName='" + aName + '\'' +
-                ", aIntroduce='" + aIntroduce + '\'' +
-                ", aDate=" + aDate +
-                ", aPicture='" + aPicture + '\'' +
-                ", gId='" + gId + '\'' +
+                "articleId='" + articleId + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleIntroduce='" + articleIntroduce + '\'' +
+                ", articleDate=" + articleDate +
+                ", articleStatus='" + articleStatus + '\'' +
+                ", guruId='" + guruId + '\'' +
+                ", g=" + g +
                 '}';
     }
 }

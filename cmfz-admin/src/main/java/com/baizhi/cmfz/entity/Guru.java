@@ -1,5 +1,7 @@
 package com.baizhi.cmfz.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+
 import java.io.Serializable;
 /**
  *@Author  zhangshaojie
@@ -10,8 +12,11 @@ import java.io.Serializable;
  */
 public class Guru implements Serializable {
     private String guruId;
+    @Excel(name="上师法名")
     private String guruReligionName;
+    @Excel(name="上师头像")
     private String guruPicture;
+    @Excel(name="上师简介")
     private String guruDescription;
 
     @Override

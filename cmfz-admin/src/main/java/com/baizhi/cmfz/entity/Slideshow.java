@@ -15,7 +15,7 @@ import java.util.Date;
 public class Slideshow implements Serializable {
     private String slideId;
     private String slidePath;
-    @JSONField(format = "yyyy-MM-dd")   //相应的日期格式
+    @JSONField(format = "yy-MM-dd HH:mm:ss")   //相应的日期格式
     @DateTimeFormat(pattern = "yyyy-MM-dd")  //请求的日期格式
     private Date slideDate;
     private String slideDescription;

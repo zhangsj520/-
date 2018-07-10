@@ -24,5 +24,5 @@ public interface ManagerService {
     *@Param 参数1：管理员的信息
     *@Exception
     */
-    public int registManager(Manager m);
+    public int addManager(Manager m);
 }

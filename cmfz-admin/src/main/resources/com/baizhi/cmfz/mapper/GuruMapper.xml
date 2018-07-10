@@ -8,7 +8,10 @@
         <result property="guruDescription" column="g_description"/>
     </resultMap>
     <select id="selectAllGuru" resultMap="gm">
-        select * from t_guru limit #{start},#{pageSize}
+        select * from t_guru
+        <if test="start!=null and pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
     </select>
     <insert id="insertOne">
         insert into t_guru values(replace(UUID(),'-',''),#{guruReligionName},#{guruPicture},#{guruDescription})
@@ -32,4 +35,15 @@
     <select id="selectByKey" resultMap="gm">
         select * from t_guru where ${key} like concat('%',#{value},'%') limit #{start},#{pageSize}
     </select>
+    <insert id="insertList">
+        insert into t_guru values
+        <foreach collection="list" item="g" index="index" separator=",">
+            (
+            replace(UUID(),'-',''),
+            #{g.guruReligionName,jdbcType=VARCHAR},
+            #{g.guruPicture,jdbcType=VARCHAR},
+            #{g.guruDescription,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
 </mapper>

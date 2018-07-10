@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.ArticleDao">
+    <resultMap id="am" type="Article">
+        <id property="articleId" column="a_id"/>
+        <result property="articleTitle" column="a_title"/>
+        <result property="articleIntroduce" column="a_introduce"/>
+        <result property="articleDate" column="a_date"/>
+        <result property="articleStatus" column="a_status"/>
+        <association property="g" javaType="com.baizhi.cmfz.entity.Guru">
+            <id property="guruId" column="g_id"></id>
+            <result property="guruReligionName" column="g_religionName"/>
+            <result property="guruPicture" column="g_picture"/>
+            <result property="guruDescription" column="g_description"/>
+        </association>
+    </resultMap>
+    <select id="selectAllArticle" resultMap="am">
+        SELECT
+        a.a_id a_id,
+        a.a_title a_title,
+        a.a_introduce a_introduce,
+        a.a_date a_date,
+        a.a_status a_status,
+        g.g_id g_id,
+        g.g_religionName g_religionName,
+        g.g_picture g_picture,
+        g.g_description g_description
+        FROM
+        t_article a,
+        t_guru g
+        WHERE
+        a.g_id = g.g_id
+        <if test="start!=null and pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+    <insert id="insertOne">
+        insert into t_article values(replace(UUID(),'-',''),#{articleTitle},#{articleStatus},now(),#{guruId},#{articleIntroduce})
+    </insert>
+    <select id="count" resultType="int">
+        select count(*) from t_article
+    </select>
+    <!--<update id="updateOne">
+        update t_guru
+        <set>
+            g_religionName = #{guruReligionName},g_description = #{guruDescription},
+            <if test="guruPicture!=null and guruPicture !=''">
+               g_picture = #{guruPicture},
+            </if>
+        </set>
+        where g_id = #{guruId}
+    </update>-->
+   <!-- <select id="selectByKey" resultMap="gm">
+        select * from t_guru where ${key} like concat('%',#{value},'%') limit #{start},#{pageSize}
+    </select>
+    <insert id="insertList">
+        insert into t_guru values
+        <foreach collection="list" item="g" index="index" separator=",">
+            (
+            replace(UUID(),'-',''),
+            #{g.guruReligionName,jdbcType=VARCHAR},
+            #{g.guruPicture,jdbcType=VARCHAR},
+            #{g.guruDescription,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>-->
+</mapper>

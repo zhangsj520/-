@@ -1,15 +1,6 @@
-import com.baizhi.cmfz.dao.GuruDao;
-import com.baizhi.cmfz.dao.ManagerDao;
-import com.baizhi.cmfz.dao.MenuDao;
-import com.baizhi.cmfz.dao.SlideshowDao;
-import com.baizhi.cmfz.entity.Guru;
-import com.baizhi.cmfz.entity.Manager;
-import com.baizhi.cmfz.entity.Menu;
-import com.baizhi.cmfz.entity.Slideshow;
-import com.baizhi.cmfz.service.GuruService;
-import com.baizhi.cmfz.service.ManagerService;
-import com.baizhi.cmfz.service.MenuService;
-import com.baizhi.cmfz.service.SlideshowService;
+import com.baizhi.cmfz.dao.*;
+import com.baizhi.cmfz.entity.*;
+import com.baizhi.cmfz.service.*;
 import com.baizhi.cmfz.util.SaltUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +38,21 @@ public class TestDao {
     private GuruDao gd;
     @Autowired
     private GuruService gs;
+    @Autowired
+    private ArticleDao ad;
+    @Autowired
+    private ArticleService as;
     @Test
     public void TestManager(){
+        Manager fgx = ms.login("fgx", "123456");
+        System.out.println(fgx);
+       /* Map<String, Object> map = as.queryAllArticle(1, 4);
+        for (String s : map.keySet()) {
+            System.out.println(s);
+            System.out.println(map.get(s));
+        }*/
+        /*List<Article> a = ad.selectAllArticle(0, 1);
+        System.out.println(a);*/
        /* Manager manager = md.selectManager("zsj");
         System.out.println(manager);*/
        /* int i = md.insertManager(new Manager(null, "fjk", SaltUtil.getSalt(), "1", "1234556"));
@@ -91,11 +96,26 @@ public class TestDao {
         for (Guru guru : gurus) {
             System.out.println(guru);
         }*/
-        Map<String, Object> map = gs.queryGuruByKey("g_religionName","阿",1,2);
+       /* Map<String, Object> map = gs.queryGuruByKey("g_religionName","阿",1,2);
         for (String s : map.keySet()) {
             System.out.println(s);
             System.out.println(map.get(s));
-        }
+        }*/
+      /* List<Guru> list = new ArrayList<>();
+       list.add(new Guru(null,"测试1","cesh1","ceshi 1"));
+       list.add(new Guru(null,"测试2","cesh2","ceshi 2"));
+        int i = gd.insertList(list);
+        System.out.println(i);*/
+       /* List<Guru> gurus = gd.selectAllGuru(1, 4);
+        for (Guru guru : gurus) {
+            System.out.println(guru);
+        }*/
+        /*Map<String, Object> map = gs.queryAllGuru( 1, 4);
+        for (String s : map.keySet()) {
+            System.out.println(s);
+            System.out.println(map.get(s));
+        }*/
+
     }
 
 

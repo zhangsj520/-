@@ -20,6 +20,10 @@
         <div data-options="name:'majorName'">专业</div>--%>
     </div>
 </div>
+<%--<form action = "" method = "post" enctype="multipart/form-data">
+    <input class="fileFrom" type="file" name="myFile"/><br/>
+    <input class="formSubmit" type="submit" value="立即添加" name="">
+</form>--%>
 <script>
     $(function () {
         $('#guruTable').datagrid({
@@ -35,6 +39,63 @@
                 {field: 'guruDescription', title: '上师简介', width: 80,}
             ]],
             toolbar: [{
+                iconCls:'icon-add',
+                text:"上传Excel添加",
+                handler:function(){
+                    $("#guruDialog").dialog({
+                        title: "Excel添加上师",
+                        width: 400,
+                        height: 260,
+                        modal: true,
+                        collapsible: true,
+                        minimizable: true,
+                        maximizable: true,
+                        href: "${pageContext.request.contextPath}/jsp/guru/uploadGuruExcel.jsp",
+                        buttons: [{
+                            text: '取消',
+                            iconCls: "icon-cross",
+                            handler: function () {
+                                $.messager.show({
+                                    title: "取消",
+                                    msg: "您已经取消添加Excel，窗口3秒后消失",
+                                    timeout: 3000,
+                                });
+                                $("#guruDialog").dialog("close", {});
+                            }
+                        }, {
+                            //消息框保存
+                            //============================================================
+                            text: '上传',
+                            iconCls: "icon-disk",
+                            handler: function () {
+                                $("#uploadGuruExcel").form("submit", {
+                                    url: "${pageContext.request.contextPath}/guru/excelUpload1",
+                                    onSubmit: function () {
+                                        return $(this).form("validate");
+                                    },
+                                    success: function (data) {
+                                        if (data == "success") {
+                                            $("#guruTable").datagrid("reload", {});
+                                            $.messager.show({
+                                                title: "提示消息",
+                                                msg: "上传Excel成功，窗口3秒后消失",
+                                                timeout: 3000,
+                                            });
+                                            $("#guruDialog").dialog("close", {});
+                                        } else {
+                                            $.messager.show({
+                                                title: "提示消息",
+                                                msg: "上传失败",
+                                                timeout: 3000,
+                                            });
+                                        }
+                                    },
+                                });
+                            }
+                        }],
+                    });
+                }
+            },{
                 iconCls: 'icon-add',
                 text: "添加上师",
                 handler: function () {
@@ -99,6 +160,13 @@
                 iconCls: 'icon-user_b',
                 text: "帮助",
             }, {
+                //下载Excel表====================================================
+                iconCls: 'icon-20130406125519344_easyicon_net_16',
+                text: "下载Excel格式",
+                handler:function(){
+                    window.location.href="${pageContext.request.contextPath}/guru/export";
+                }
+            },{
                 //修改上师====================================================================
                 iconCls: 'icon-edit',
                 text: "修改上师信息",
